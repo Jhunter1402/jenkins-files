@@ -8,7 +8,7 @@ def ssh_command(ssh_ip, username, passwd):
 
     try:
         ssh_client.connect(hostname=ssh_ip, username= username, password=passwd)
-        print("Connected to", hostname)
+        print("Connected to", ssh_ip)
         command = "ls -l"
         stdin, stdout, stderr = ssh_client.exec_command(command)
         # stdin, stdout, stderr inbuilt variables
