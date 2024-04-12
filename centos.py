@@ -2,12 +2,12 @@ import paramiko
 import sys
 
 
-def ssh_command(hostname, username, passwd):
+def ssh_command(ssh_ip, username, passwd):
     ssh_client = paramiko.SSHClient()
     ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 
     try:
-        ssh_client.connect(hostname=hostname, username= username, password=passwd)
+        ssh_client.connect(hostname=ssh_ip, username= username, password=passwd)
         print("Connected to", hostname)
         command = "ls -l"
         stdin, stdout, stderr = ssh_client.exec_command(command)
