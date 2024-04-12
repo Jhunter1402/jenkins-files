@@ -29,8 +29,8 @@ def ssh_command(ssh_ip, username, passwd):
         print("Connection Closed.")
 
 if __name__ == "__main__":
-    ssh_ip = sys.argv[0]
-    username = sys.argv[1]
-    passwd = sys.argv[2]
+    ssh_ip = sys.argv[1]
+    username = sys.argv[2]
+    passwd = sys.argv[3]
     print(ssh_ip, username, passwd)
     ssh_command(ssh_ip, username, passwd)
