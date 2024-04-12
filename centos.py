@@ -32,4 +32,5 @@ if __name__ == "__main__":
     ssh_ip = sys.argv[0]
     username = sys.argv[1]
     passwd = sys.argv[2]
+    print(shh_ip, username, passwd)
     ssh_command(ssh_ip, username, passwd)
