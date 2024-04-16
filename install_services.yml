@@ -4,26 +4,43 @@
   connection: local
   become: yes
   tasks:
+    - name: Install Docker Repositories
+      yum:
+        name: yum-utils
+        state: present
+      become: yes
+
+    - name: Add Docker Repository
+      command: yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+      become: yes
+
     - name: Install Docker package
       yum:
-        name: docker
+        name:
+          - docker-ce
+          - docker-ce-cli
+          - containerd.io
+          - docker-buildx-plugin
+          - docker-compose-plugin
         state: present
-      ignore_errors: yes
+      become: yes
 
     - name: Install Apache package
       yum:
         name: httpd
         state: present
-      ignore_errors: yes
+      become: yes
 
     - name: Start and enable Docker service
       service:
         name: docker
         state: started
         enabled: yes
+      become: yes
 
     - name: Start and enable Apache service
       service:
         name: httpd
         state: started
         enabled: yes
+      become: yes
