@@ -1,6 +1,12 @@
 pipeline {
     agent any
     stages {
+        stage('Checkout') {
+            steps {
+                // Checkout source code from Git
+                checkout scm
+            }
+        }
         stage('Installation') {
             steps {
                 // Use double quotes for consistency
@@ -8,17 +14,11 @@ pipeline {
                 sh "sudo yum install ansible -y"
             }
         }
-        stage('Git') {
-            steps {
-                // Use double quotes for consistency
-                git "https://github.com/Jhunter1402/jenkins-files.git"
-            }
-        }
         stage('Install-Services') {
             steps {
                 // Use double quotes for consistency
                 sh "ansible-playbook install_services.yml"
             }
-        }
-    }
+        }
+    }
 }
